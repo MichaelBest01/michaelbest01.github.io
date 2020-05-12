@@ -13,9 +13,6 @@ body {
 	margin: 0;
 }
 
-img:hover {
-    animation: rotater 0.4s 1;
-}
 
 @keyframes rotater {
     0%{transform: rotate(0deg);}
