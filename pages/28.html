@@ -7,7 +7,7 @@
     <script>
         window.onload = function() {
             function removeImg(event){
-                if(event.ctrlKey && event.key === '\\'){
+                if(event.ctrlKey && event.altKey && event.key === '\\'){
                     document.removeEventListener('keydown', removeImg);
                     document.getElementById("fakeoverlay").remove();
                 }
