@@ -6,8 +6,8 @@
 	<link rel="shortcut icon" type="image/png" href="../resources/favicon.png">
     <script>
         window.onload = function() {
-            function removeImg(event) {
-                if (event.ctrlKey && event.key === '\\') {
+            function removeImg(event){
+                if(event.ctrlKey && event.key === '\\'){
                     document.removeEventListener('keydown', removeImg);
                     document.getElementById("fakeoverlay").remove();
                 }
@@ -41,8 +41,7 @@ box-sizing: border-box;
     </div></a>
 
 	<div class="game">
-	<object width="650" height="633">
-		<param name="movie" value="../sleepingbeauty/index.html">
+		<iframe src="https://web.archive.org/web/20200514165547/https://classic.minecraft.net/" width="1050" height="600">
         <param name=wmode value=transparent>
 	</object>
 	</div>

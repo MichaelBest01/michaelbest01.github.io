@@ -4,9 +4,37 @@
 	<link href="stylesheet.css" type="text/css" rel="stylesheet">
 	<title>Virus Invader</title>
 	<link rel="shortcut icon" type="image/png" href="../resources/favicon.png">
+    <script>
+        window.onload = function() {
+            function removeImg(event){
+                if(event.ctrlKey && event.key === '\\'){
+                    document.removeEventListener('keydown', removeImg);
+                    document.getElementById("fakeoverlay").remove();
+                }
+            }
+            document.addEventListener('keydown', removeImg);
+        };
+    </script>
+
+<style>
+#fakeoverlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+}
+body { }
+* {
+box-sizing: border-box;
+}
+</style>
 </head>
 
 <body>
+
+<img src="website.jpg" id="fakeoverlay">
 
     <a href="../index.html"><div class="back" id="top">
         <img src="../resources/favicon.png">
