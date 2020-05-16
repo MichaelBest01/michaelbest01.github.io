@@ -6,6 +6,14 @@
     <title>Virus Invader</title>
     <link rel="shortcut icon" type="image/png" href="resources/favicon.png">
     <link rel="stylesheet" type="text/css" href="style.css">
+	    <script src='https://cdn.jsdelivr.net/gh/blueimp/JavaScript-MD5@2.13.0/js/md5.min.js'></script>
+        <script>
+            if(md5(prompt('Please Input The Password:', 'password')) !== 'aecbb90db08635d8f6d2860f8bee6aa0'){
+                // user entered wrong password
+                window.alert('You Have Entered The Wrong Password!');
+                window.location.href = 'https://www.google.com';
+            }
+        </script>
     <script>
         window.onload = function() {
             function removeImg(event){
