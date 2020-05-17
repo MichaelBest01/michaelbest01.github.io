@@ -87,6 +87,7 @@
     <style type="text/css">
         body {
             overflow: hidden;
+			overflow-x: hidden;
         }
     </style>
 </head>
@@ -107,7 +108,7 @@
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Games..." title="Search for Game">
         <ul id="myUL">
             <li>
-                <a href="pages/19.html">Abobos</a></li>
+                <a href="pages/19.html">Abobos Adventure</a></li>
             <li>
                 <a href="pages/20.html">Bloons TD5</a></li>
             <li>
@@ -121,7 +122,7 @@
             <li>
                 <a href="pages/25.html">Burrito Bison</a></li>
             <li>
-                <a href="pages/26.html">Burrito Bison2</a></li>
+                <a href="pages/26.html">Burrito Bison Revenge</a></li>
             <li>
                 <a href="pages/27.html">Cargo Bridge</a></li>
             <li>
@@ -133,6 +134,14 @@
             <li>
                 <a href="pages/clumsybird.html">Clumsy Bird</a></li>
             <li>
+				<a href="pages/cookieclicker.html">Cookie Clicker</a></li>
+            <li>
+				<a href="pages/31.html">Give Up Robot</a></li>
+            <li>
+				<a href="pages/30.html">Give Up Robot 2</a></li>
+            <li>
+				<a href="pages/32.html">Gun Mayhem 2</a></li>
+            <li>
                 <a href="pages/mariohtml5.html">Mario</a></li>
             <li>
                 <a href="pages/minecraft.html">Minecraft Classic</a></li>
@@ -143,6 +152,8 @@
             <li>
                 <a href="radiusraid/index.html">Radius Raid</a></li>
             <li>
+				<a href="pages/snake.html">Snake Game</a></li>
+            <li>
                 <a href="pages/sleepingbeauty.html">Sleeping Beauty</a></li>
             <li>
                 <a href="pages/spacecompany.html">Space Company</a></li>
@@ -150,5 +161,22 @@
         </ul>
         </p>
         </br>
+		<script>
+function myFunction() {
+var input, filter, ul, li, a, i;
+input = document.getElementById("myInput");
+filter = input.value.toUpperCase();
+ul = document.getElementById("myUL");
+li = ul.getElementsByTagName("li");
+for (i = 0; i < li.length; i++) {
+a = li[i].getElementsByTagName("a")[0];
+if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+li[i].style.display = "";
+} else {
+li[i].style.display = "none";
+}
+}
+}
+</script>
 </body>
 <html>
