@@ -34,7 +34,7 @@ a {
 	cursor: pointer;
 }
 
-.glink {
+#glink a{
 	display: block;
 	text-decoration: none;
 	color: black;
@@ -46,7 +46,7 @@ a {
 	transition: 0.2s ease;
 }
 
-.glink:hover {
+#glink a:hover {
 	background-color: #eee;
 	text-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
