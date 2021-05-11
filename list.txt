@@ -1,3 +1,2 @@
 index.html
 list.html
-gfiles/f.html
