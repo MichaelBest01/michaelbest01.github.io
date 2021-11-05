@@ -1,4 +1,5 @@
 # My Basic Proxy Site For School
+This website has a cloak. In order to access it, you have to press `ctrl` `m` or press the bottom left corner.
 A website that hosts some games and has some proxies.
 It is important to note that all of these games are the property of their respective creators.
 If you want a game removed please contact me.
