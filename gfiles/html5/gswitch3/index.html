@@ -281,31 +281,5 @@
 
 	<div id="openfl-content"></div>
 	
-	<script type="text/javascript">
-		var run = false;
-		var allowedDomains = [
-				"www.twoplayergames.org", "twoplayergames.org", "m.twoplayergames.org", "files.twoplayergames.org",
-				"www.g2k.co", "g2k.co", "games-cdn.g2k.co"
-		];
-
-		if (document.referrer === '') {
-			run = true;
-		} else {
-			var domain = (new URL(document.referrer)).hostname;
-
-			if (allowedDomains.includes(domain) > 0) {
-				run = true;
-			}
-		}
-
-		if (!run) {
-			document.getElementById("licenseWarning").style.display = "";
-		} else {
-			setTimeout(function () {
-				lime.embed ("G-Switch3", "openfl-content", 0, 0, { parameters: {} });
-			}, 200);
-		}
-	</script>
-	
 </body>
 </html>
