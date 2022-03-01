@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="utf-8">
+	
+	<title>G-Switch 3</title>
+	
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	
+	
+	<link rel="shortcut icon" type="image/png" href="./favicon.png">
+	
+	
+	<script type="text/javascript" src="./lib/howler.min.js"></script>
+	<script type="text/javascript" src="./lib/pako.min.js"></script>
+	<script type="text/javascript" src="./lib/FileSaver.min.js"></script>
+	<script type="text/javascript" src="./G-Switch3.js"></script>
+	
+	<script>
+		window.addEventListener ("touchmove", function (event) { event.preventDefault (); }, { capture: false, passive: false });
+		if (typeof window.devicePixelRatio != 'undefined' && window.devicePixelRatio > 2) {
+			var meta = document.getElementById ("viewport");
+			meta.setAttribute ('content', 'width=device-width, initial-scale=' + (2 / window.devicePixelRatio) + ', user-scalable=no');
+		}
+	</script>
+	
+	<style>
+		html,body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+		#openfl-content { background: #000000; width: 100%; height: 100%; }
+		@font-face {
+			font-family: 'Meiryo UI';
+			src: url('assets/data/MeiryoUI.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/MeiryoUI.woff') format('woff'),
+			url('assets/data/MeiryoUI.ttf') format('truetype'),
+			url('assets/data/MeiryoUI.svg#Meiryo%20UI') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Meiryo UI W53 Bold';
+			src: url('assets/data/MeiryoUIBold.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/MeiryoUIBold.woff') format('woff'),
+			url('assets/data/MeiryoUIBold.ttf') format('truetype'),
+			url('assets/data/MeiryoUIBold.svg#Meiryo%20UI%20W53%20Bold') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Un Dotum';
+			src: url('assets/data/UnDotum.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/UnDotum.woff') format('woff'),
+			url('assets/data/UnDotum.ttf') format('truetype'),
+			url('assets/data/UnDotum.svg#Un%20Dotum') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Un Dotum Bold';
+			src: url('assets/data/UnDotumBold.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/UnDotumBold.woff') format('woff'),
+			url('assets/data/UnDotumBold.ttf') format('truetype'),
+			url('assets/data/UnDotumBold.svg#Un%20Dotum%20Bold') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Gerdana';
+			src: url('assets/data/verdana.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/verdana.woff') format('woff'),
+			url('assets/data/verdana.ttf') format('truetype'),
+			url('assets/data/verdana.svg#Gerdana') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Verdana Bold';
+			src: url('assets/data/verdanab.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/verdanab.woff') format('woff'),
+			url('assets/data/verdanab.ttf') format('truetype'),
+			url('assets/data/verdanab.svg#Verdana%20Bold') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Verdana Italic';
+			src: url('assets/data/verdanai.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/verdanai.woff') format('woff'),
+			url('assets/data/verdanai.ttf') format('truetype'),
+			url('assets/data/verdanai.svg#Verdana%20Italic') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Verdana Bold Italic';
+			src: url('assets/data/verdanaz.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/verdanaz.woff') format('woff'),
+			url('assets/data/verdanaz.ttf') format('truetype'),
+			url('assets/data/verdanaz.svg#Verdana%20Bold%20Italic') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Microsoft YaHei Bold';
+			src: url('assets/data/YaHei Bold.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/YaHei Bold.woff') format('woff'),
+			url('assets/data/YaHei Bold.ttf') format('truetype'),
+			url('assets/data/YaHei Bold.svg#Microsoft%20YaHei%20Bold') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Microsoft YaHei';
+			src: url('assets/data/YaHei.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/YaHei.woff') format('woff'),
+			url('assets/data/YaHei.ttf') format('truetype'),
+			url('assets/data/YaHei.svg#Microsoft%20YaHei') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Meiryo UI';
+			src: url('assets/data/MeiryoUI.eot');
+			src: url('assets/data/MeiryoUI.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/MeiryoUI.svg#my-font-family') format('svg'),
+			url('assets/data/MeiryoUI.woff') format('woff'),
+			url('assets/data/MeiryoUI.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Meiryo UI W53 Bold';
+			src: url('assets/data/MeiryoUIBold.eot');
+			src: url('assets/data/MeiryoUIBold.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/MeiryoUIBold.svg#my-font-family') format('svg'),
+			url('assets/data/MeiryoUIBold.woff') format('woff'),
+			url('assets/data/MeiryoUIBold.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Un Dotum';
+			src: url('assets/data/UnDotum.eot');
+			src: url('assets/data/UnDotum.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/UnDotum.svg#my-font-family') format('svg'),
+			url('assets/data/UnDotum.woff') format('woff'),
+			url('assets/data/UnDotum.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Un Dotum Bold';
+			src: url('assets/data/UnDotumBold.eot');
+			src: url('assets/data/UnDotumBold.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/UnDotumBold.svg#my-font-family') format('svg'),
+			url('assets/data/UnDotumBold.woff') format('woff'),
+			url('assets/data/UnDotumBold.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Gerdana';
+			src: url('assets/data/verdana.eot');
+			src: url('assets/data/verdana.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/verdana.svg#my-font-family') format('svg'),
+			url('assets/data/verdana.woff') format('woff'),
+			url('assets/data/verdana.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Verdana Bold';
+			src: url('assets/data/verdanab.eot');
+			src: url('assets/data/verdanab.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/verdanab.svg#my-font-family') format('svg'),
+			url('assets/data/verdanab.woff') format('woff'),
+			url('assets/data/verdanab.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Verdana Italic';
+			src: url('assets/data/verdanai.eot');
+			src: url('assets/data/verdanai.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/verdanai.svg#my-font-family') format('svg'),
+			url('assets/data/verdanai.woff') format('woff'),
+			url('assets/data/verdanai.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Verdana Bold Italic';
+			src: url('assets/data/verdanaz.eot');
+			src: url('assets/data/verdanaz.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/verdanaz.svg#my-font-family') format('svg'),
+			url('assets/data/verdanaz.woff') format('woff'),
+			url('assets/data/verdanaz.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Microsoft YaHei Bold';
+			src: url('assets/data/YaHei Bold.eot');
+			src: url('assets/data/YaHei Bold.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/YaHei Bold.svg#my-font-family') format('svg'),
+			url('assets/data/YaHei Bold.woff') format('woff'),
+			url('assets/data/YaHei Bold.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Microsoft YaHei';
+			src: url('assets/data/YaHei.eot');
+			src: url('assets/data/YaHei.eot?#iefix') format('embedded-opentype'),
+			url('assets/data/YaHei.svg#my-font-family') format('svg'),
+			url('assets/data/YaHei.woff') format('woff'),
+			url('assets/data/YaHei.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}		@font-face {
+			font-family: 'Nokia Cellphone FC Small';
+			src: url('flixel/fonts/nokiafc22.eot?#iefix') format('embedded-opentype'),
+			url('flixel/fonts/nokiafc22.woff') format('woff'),
+			url('flixel/fonts/nokiafc22.ttf') format('truetype'),
+			url('flixel/fonts/nokiafc22.svg#Nokia%20Cellphone%20FC%20Small') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Monsterrat';
+			src: url('flixel/fonts/monsterrat.eot?#iefix') format('embedded-opentype'),
+			url('flixel/fonts/monsterrat.woff') format('woff'),
+			url('flixel/fonts/monsterrat.ttf') format('truetype'),
+			url('flixel/fonts/monsterrat.svg#Monsterrat') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		#licenseWarning {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			display: flex;
+			height: 100%;
+			align-items: center;
+			justify-content: center;
+			padding: 0 30px;
+			text-align: center;
+			background-color: #B5E3EB;
+		}
+		#licenseWarning strong {
+			font-size: 24pt;
+		}
+		#licenseWarning img {
+			margin: 15px 0;
+		}
+		#licenseWarning img:hover {
+			filter: brightness(1.1) contrast(1.1);
+		}
+	</style>
+	
+</head>
+<body>
+
+<noscript>This webpage makes extensive use of JavaScript. Please enable JavaScript in your web browser to view this
+	page.
+</noscript>
+<div id="licenseWarning" style="display: none;">
+	<div>
+		<strong>Sorry.</strong>
+		<p>This game does not support embedding due to the developer agreement.</p>
+		<p>To play this game, go to developer's website:<br>
+			<a href="https://www.twoplayergames.org/G-Switch-3/1173.html?utm_source=Html5Game&utm_medium=GSwitch3&utm_campaign=Blocked" target="_blank"><img alt="Two Player Games"
+																			   src="assets/branding/tpg_splash_title.png"
+																			   width="300"></a>
+		</p>
+		<p>Thank you!</p>
+		<a href="https://www.twoplayergames.org/?utm_source=Html5Game&utm_medium=GSwitch3&utm_campaign=Blocked" target="_blank">www.twoplayergames.org</a>
+	</div>
+</div>
+
+	<div id="openfl-content"></div>
+	
+	<script type="text/javascript">
+		var run = false;
+		var allowedDomains = [
+				"www.twoplayergames.org", "twoplayergames.org", "m.twoplayergames.org", "files.twoplayergames.org",
+				"www.g2k.co", "g2k.co", "games-cdn.g2k.co"
+		];
+
+		if (document.referrer === '') {
+			run = true;
+		} else {
+			var domain = (new URL(document.referrer)).hostname;
+
+			if (allowedDomains.includes(domain) > 0) {
+				run = true;
+			}
+		}
+
+		if (!run) {
+			document.getElementById("licenseWarning").style.display = "";
+		} else {
+			setTimeout(function () {
+				lime.embed ("G-Switch3", "openfl-content", 0, 0, { parameters: {} });
+			}, 200);
+		}
+	</script>
+	
+</body>
+</html>
